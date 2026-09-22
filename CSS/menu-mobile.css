@@ -1,0 +1,70 @@
+.menu-btn{
+  display: none;
+  position: relative;
+  width: 40px; height: 40px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.menu-btn span{
+  position: absolute;
+  left: 9px; right: 9px;
+  height: 2px;
+  background: var(--off-white);
+  border-radius: 2px;
+  transition: transform var(--duracao) var(--suave), opacity var(--duracao) var(--suave);
+}
+.menu-btn span:nth-child(1){ top: 14px; }
+.menu-btn span:nth-child(2){ top: 19px; }
+.menu-btn span:nth-child(3){ top: 24px; }
+.menu-btn.is-active span:nth-child(1){ transform: translateY(5px) rotate(45deg); }
+.menu-btn.is-active span:nth-child(2){ opacity: 0; }
+.menu-btn.is-active span:nth-child(3){ transform: translateY(-5px) rotate(-45deg); }
+
+.menu-overlay{
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  background: rgba(10,10,14,0.55);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--duracao) var(--suave);
+}
+.menu-overlay.is-open{ opacity: 1; pointer-events: auto; }
+
+.menu-mobile{
+  position: fixed;
+  top: 82px; left: 20px; right: 20px;
+  z-index: 45;
+  padding: 12px;
+  border-radius: var(--raio);
+  background: var(--glass-bg-forte);
+  border: 1px solid var(--glass-borda);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+  backdrop-filter: var(--glass-filter-forte);
+  -webkit-backdrop-filter: var(--glass-filter-forte);
+  opacity: 0;
+  transform: translateY(-12px) scale(0.98);
+  pointer-events: none;
+  transition: opacity var(--duracao) var(--suave), transform var(--duracao) var(--suave);
+}
+.menu-mobile.is-open{ opacity: 1; transform: none; pointer-events: auto; }
+
+.menu-mobile nav{ display: flex; flex-direction: column; }
+.menu-mobile a{
+  display: block;
+  color: rgba(255,255,255,0.92);
+  text-decoration: none;
+  font-weight: 500;
+  padding: 14px 16px;
+  border-radius: 12px;
+  transition: background var(--duracao) var(--suave);
+}
+.menu-mobile a:hover, .menu-mobile a:focus-visible{ background: rgba(255,255,255,0.08); }
+.menu-mobile .btn-primary{ margin-top: 6px; text-align: center; }
+
+body.menu-aberto{ overflow: hidden; }
+
+@media (min-width: 861px){
+  .menu-overlay, .menu-mobile{ display: none; }
+}

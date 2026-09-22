@@ -1,0 +1,93 @@
+:root{
+  --roxo: #443B6D;
+  --roxo-claro: #6b5f9c;
+  --off-white: #ffffff;
+  --chumbo: #2A2A2A;
+
+  --glass-bg: rgba(255,255,255,0.05);       
+  --glass-bg-forte: rgba(255,255,255,0.09);  
+  --glass-borda: rgba(255,255,255,0.14);    
+  --glass-header-bg: rgba(23,23,23,0.7); 
+  --glass-claro-bg: rgba(245, 245, 248, 0.397);  
+  --glass-claro-borda: rgba(255,255,255,0.4);
+
+  --glass-blur: 18px;
+  --glass-blur-forte: 24px;
+  --glass-saturacao: 140%;
+  --glass-filter: blur(var(--glass-blur)) saturate(var(--glass-saturacao));
+  --glass-filter-forte: blur(var(--glass-blur-forte)) saturate(150%);
+
+  --raio: 20px;
+  --raio-sm: 14px;
+  --duracao: .25s;
+  --suave: cubic-bezier(.4,0,.2,1);
+
+  --largura-container: 1180px;
+  --altura-header: 84px;
+}
+
+*{ box-sizing: border-box; margin: 0; padding: 0; }
+
+html{ scroll-behavior: smooth; }
+
+body{
+  font-family: 'Inter', sans-serif;
+  background: var(--chumbo);
+  color: rgba(255,255,255,0.88);
+}
+
+.container{
+  max-width: var(--largura-container);
+  margin: 0 auto;
+  padding: 0 clamp(20px, 4vw, 56px);
+}
+
+#servicos, #projetos, #contato{
+  scroll-margin-top: var(--altura-header);
+}
+
+a{ color: inherit; }
+
+:focus-visible{
+  outline: 2px solid var(--roxo-claro);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: reduce){
+  html{ scroll-behavior: auto; }
+  *{
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+  #bgCanvas{ display: none; }
+  .bg-fallback{ z-index: 0; }
+}
+
+.btn-cta, .btn-primary{
+  display: inline-block;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  border-radius: 999px;
+  font-weight: 600;
+  transition: background var(--duracao) var(--suave), transform .15s ease;
+}
+
+.btn-cta{
+  background: var(--roxo);
+  color: var(--off-white);
+  font-size: 14px;
+  padding: 12px 26px;
+}
+.btn-cta:hover{ background: var(--roxo-claro); transform: translateY(-1px); }
+
+.btn-primary{
+  background: var(--roxo);
+  color: var(--off-white);
+  font-size: 15px;
+  padding: 15px 30px;
+}
+.btn-primary:hover{ background: var(--roxo-claro); transform: translateY(-1px); }

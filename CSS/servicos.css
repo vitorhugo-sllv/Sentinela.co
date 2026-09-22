@@ -1,0 +1,54 @@
+.servicos{
+  position: relative;
+  overflow: hidden;
+  background: var(--chumbo);
+  padding: clamp(64px, 10vw, 120px) 0;
+}
+.servicos::before{
+  content: "";
+  position: absolute;
+  width: 600px; height: 600px;
+  top: -220px; right: -160px;
+  background: radial-gradient(circle, rgba(107,95,156,0.35), transparent 70%);
+  filter: blur(50px);
+  pointer-events: none;
+}
+
+.servicos-grid{
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+.card-servico{
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-borda);
+  border-radius: var(--raio-sm);
+  padding: 28px 24px;
+  backdrop-filter: var(--glass-filter);
+  -webkit-backdrop-filter: var(--glass-filter);
+  transition: transform var(--duracao) var(--suave), border-color var(--duracao) var(--suave), background var(--duracao) var(--suave);
+}
+.card-servico:hover{
+  transform: translateY(-4px);
+  border-color: rgba(255,255,255,0.28);
+  background: var(--glass-bg-forte);
+}
+.card-servico svg{
+  width: 26px; height: 26px;
+  color: var(--roxo-claro);
+  margin-bottom: 18px;
+}
+.card-servico h3{
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--off-white);
+  margin-bottom: 10px;
+}
+.card-servico p{
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: rgba(255,255,255,0.85);
+}

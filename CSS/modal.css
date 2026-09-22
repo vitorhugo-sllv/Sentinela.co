@@ -1,0 +1,105 @@
+/* ============================================================
+   MODAL DE PROJETO
+   ============================================================ */
+.projeto-modal-overlay{
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  background: rgba(10,10,14,0.65);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--duracao) var(--suave);
+}
+.projeto-modal-overlay.is-open{ opacity: 1; pointer-events: auto; }
+
+.projeto-modal{
+  position: fixed;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -46%);
+  width: min(680px, 92vw);
+  max-height: 88vh;
+  overflow-y: auto;
+  z-index: 95;
+  border-radius: var(--raio);
+  background: var(--glass-bg-forte);
+  border: 1px solid var(--glass-borda);
+  box-shadow: 0 30px 80px rgba(0,0,0,0.45);
+  backdrop-filter: var(--glass-filter-forte);
+  -webkit-backdrop-filter: var(--glass-filter-forte);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--duracao) var(--suave), transform var(--duracao) var(--suave);
+  /* Firefox: barra fina, trilho transparente, polegar na cor da marca */
+  scrollbar-width: thin;
+  scrollbar-color: var(--roxo-claro) transparent;
+}
+.projeto-modal.is-open{
+  opacity: 1;
+  transform: translate(-50%, -50%);
+  pointer-events: auto;
+}
+
+/* Chrome, Edge, Safari */
+.projeto-modal::-webkit-scrollbar{ width: 6px; }
+.projeto-modal::-webkit-scrollbar-track{ background: transparent; }
+.projeto-modal::-webkit-scrollbar-thumb{
+  background: var(--roxo-claro);
+  border-radius: 999px;
+}
+.projeto-modal::-webkit-scrollbar-thumb:hover{ background: var(--roxo); }
+
+.projeto-modal-fechar{
+  position: absolute;
+  top: 16px; right: 16px;
+  z-index: 2;
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(20,20,24,0.55);
+  color: var(--off-white);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--duracao) var(--suave);
+}
+.projeto-modal-fechar:hover{ background: rgba(20,20,24,0.8); }
+.projeto-modal-fechar svg{ width: 16px; height: 16px; }
+
+.projeto-modal-galeria{ display: flex; flex-direction: column; gap: 4px; }
+
+.projeto-modal-foto-principal{
+  height: clamp(200px, 32vw, 280px);
+  background: linear-gradient(135deg, var(--cor-a, var(--roxo)), var(--cor-b, var(--chumbo)));
+}
+
+.projeto-modal-fotos-mini{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+}
+.projeto-modal-fotos-mini .projeto-modal-foto{
+  height: 110px;
+  background: linear-gradient(135deg, var(--cor-a, var(--roxo)), var(--cor-b, var(--chumbo)));
+}
+
+.projeto-modal-corpo{ padding: 28px 28px 32px; }
+
+.projeto-modal-top{
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+.projeto-modal-top h3{ font-size: 22px; font-weight: 800; color: var(--off-white); }
+
+.projeto-modal-corpo > p{
+  color: rgba(255,255,255,0.88);
+  line-height: 1.7;
+  margin-bottom: 26px;
+}
+
+@media (max-width: 480px){
+  .projeto-modal-corpo{ padding: 22px 20px 26px; }
+}
