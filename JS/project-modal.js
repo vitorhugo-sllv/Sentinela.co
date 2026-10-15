@@ -1,47 +1,53 @@
 // ============================================================
 // MODAL DE PROJETO
 // ============================================================
-// Dados de cada card do portfólio. Quando tiver os projetos reais,
-// troque "descricao" pelo texto completo e "fotos" pelos caminhos
-// das imagens (ex: 'assets/projetos/nortis-1.jpg') — nesse caso
-// também troque as <div class="projeto-modal-foto..."> no HTML e
-// no populaGaleria() abaixo por <img>.
+// Dados de cada card do portfólio.
+// - "imagem": caminho da imagem do projeto (pasta assets/projetos/)
+// - "alt": texto alternativo da imagem (acessibilidade)
+// Para trocar a imagem de um projeto, substitua o arquivo na pasta
+// ou altere o caminho em "imagem". A mesma imagem aparece no card e no modal.
 const PROJETOS = {
-  nortis: {
-    titulo: 'Nortis',
+  realphone: {
+    titulo: 'RealPhone',
     tag: 'Landing page',
-    descricao: 'Página de captação para lançamento de produto financeiro, com foco em clareza e conversão. Substitua este texto pela descrição real do projeto: o desafio do cliente, a solução criada e os resultados alcançados.',
-    corA: '#443B6D', corB: '#2A2A2A'
+    descricao: 'Landing page de apresentação de smartphone, com navegação vertical pelos recursos do aparelho (como câmera e tela), composição geométrica em roxo e degradê de fundo que guia o olhar até o produto.',
+    imagem: 'assets/projetos/realphone.webp',
+    alt: 'Prévia do site RealPhone, com celular em destaque e fundo roxo em degradê'
   },
-  aura: {
-    titulo: 'Aura Studio',
-    tag: 'Site institucional',
-    descricao: 'Presença digital para um estúdio de design, com portfólio dinâmico e identidade visual forte. Substitua este texto pela descrição real do projeto.',
-    corA: '#6b5f9c', corB: '#2A2A2A'
+  radiance: {
+    titulo: 'Radiance',
+    tag: 'Site de fotografia',
+    descricao: 'Site de fotografia em tela dividida: de um lado, o título e o campo de busca sobre um fundo desfocado; do outro, a foto em destaque com carrossel de miniaturas para navegar pela galeria.',
+    imagem: 'assets/projetos/radiance.webp',
+    alt: 'Prévia do site Radiance, com barco ao entardecer e campo de busca'
   },
-  cinza: {
-    titulo: 'Cinza',
+  'urban-fashion': {
+    titulo: 'Urban Fashion',
     tag: 'E-commerce',
-    descricao: 'Loja online de moda autoral, com vitrine minimalista e checkout simplificado. Substitua este texto pela descrição real do projeto.',
-    corA: '#2A2A2A', corB: '#443B6D'
+    descricao: 'Loja virtual de moda de inverno, com banner da coleção em destaque, menu por coleções e categorias, carrinho sempre visível no topo e paleta suave em degradê rosa e azul.',
+    imagem: 'assets/projetos/urban-fashion.webp',
+    alt: 'Prévia da loja Urban Fashion, com modelo vestindo casaco rosa e touca azul'
   },
-  vetor: {
-    titulo: 'Vetor',
-    tag: 'Plataforma web',
-    descricao: 'Sistema interno de gestão para equipes de operação, com dashboards em tempo real. Substitua este texto pela descrição real do projeto.',
-    corA: '#443B6D', corB: '#6b5f9c'
+  login: {
+    titulo: 'Login Neumórfico',
+    tag: 'Interface web',
+    descricao: 'Tela de login em estilo neumórfico (relevo suave), com campos de e-mail ou telefone e senha, link de recuperação de senha e atalho para cadastro, tudo em um cartão centralizado e minimalista.',
+    imagem: 'assets/projetos/login.webp',
+    alt: 'Prévia da tela de login em estilo neumórfico'
   },
-  marear: {
-    titulo: 'Marear',
+  coding: {
+    titulo: 'Coding',
     tag: 'Landing page',
-    descricao: 'Site de pré-lançamento para marca de bebidas, com narrativa visual guiada por scroll. Substitua este texto pela descrição real do projeto.',
-    corA: '#6b5f9c', corB: '#443B6D'
+    descricao: 'Landing page feita apenas com HTML e CSS, com menu fixo no topo, imagem de fundo em tela cheia, título de impacto e dois botões de chamada para ação.',
+    imagem: 'assets/projetos/coding.webp',
+    alt: 'Prévia da landing page Coding, com flores escuras ao fundo'
   },
-  fio: {
-    titulo: 'Fio',
-    tag: 'Aplicativo web',
-    descricao: 'Ferramenta de agendamento para autônomos, pensada para uso rápido no dia a dia. Substitua este texto pela descrição real do projeto.',
-    corA: '#2A2A2A', corB: '#6b5f9c'
+  'criar-conta': {
+    titulo: 'Criar Conta',
+    tag: 'Formulário',
+    descricao: 'Formulário de cadastro dividido em três etapas, com indicador de progresso no topo, campos de e-mail e senha e botão em degradê, sobre um fundo de cidade à noite.',
+    imagem: 'assets/projetos/criar-conta.webp',
+    alt: 'Prévia do formulário de criar conta em etapas, sobre fundo de cidade à noite'
   }
 };
 
@@ -56,13 +62,8 @@ const projetoModalGaleria = document.getElementById('projetoModalGaleria');
 let ultimoFocoAntesDoModal = null;
 
 function populaGaleria(p) {
-  // Placeholders coloridos com o degradê do projeto. Troque por <img> reais quando tiver as fotos.
   projetoModalGaleria.innerHTML = `
-    <div class="projeto-modal-foto-principal" style="--cor-a:${p.corA}; --cor-b:${p.corB};"></div>
-    <div class="projeto-modal-fotos-mini">
-      <div class="projeto-modal-foto" style="--cor-a:${p.corB}; --cor-b:${p.corA};"></div>
-      <div class="projeto-modal-foto" style="--cor-a:${p.corA}; --cor-b:${p.corB};"></div>
-    </div>
+    <img class="projeto-modal-imagem" src="${p.imagem}" alt="${p.alt}" width="1200" height="600">
   `;
 }
 

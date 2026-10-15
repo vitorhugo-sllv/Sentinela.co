@@ -66,21 +66,15 @@
 .projeto-modal-fechar:hover{ background: rgba(20,20,24,0.8); }
 .projeto-modal-fechar svg{ width: 16px; height: 16px; }
 
-.projeto-modal-galeria{ display: flex; flex-direction: column; gap: 4px; }
+.projeto-modal-galeria{ background: var(--chumbo); }
 
-.projeto-modal-foto-principal{
-  height: clamp(200px, 32vw, 280px);
-  background: linear-gradient(135deg, var(--cor-a, var(--roxo)), var(--cor-b, var(--chumbo)));
-}
-
-.projeto-modal-fotos-mini{
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4px;
-}
-.projeto-modal-fotos-mini .projeto-modal-foto{
-  height: 110px;
-  background: linear-gradient(135deg, var(--cor-a, var(--roxo)), var(--cor-b, var(--chumbo)));
+.projeto-modal-imagem{
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 2 / 1;
+  object-fit: cover;
+  object-position: center top;
 }
 
 .projeto-modal-corpo{ padding: 28px 28px 32px; }
